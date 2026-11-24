@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "panprism"
+version = "2.0.0"
+description = "Regulatory and splicing effect prediction for structural variants across human pangenomes"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+  {name = "PanPrism Authors"}
+]
+keywords = [
+  "pangenome",
+  "structural-variants",
+  "functional-genomics",
+  "allele-specific-expression",
+  "splicing",
+  "chromatin-contact",
+  "haplotype-phasing"
+]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "pandas>=2.0",
+  "pyarrow>=14.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/sdetw463/panprism"
+Repository = "https://github.com/sdetw463/panprism"
+Issues = "https://github.com/sdetw463/panprism/issues"
+
+[project.optional-dependencies]
+genomics = [
+  "pysam>=0.22",
+  "pyfaidx>=0.8",
+  "pyliftover>=0.4"
+]
+gpu = [
+  "torch>=2.2",
+  "huggingface-hub>=0.23",
+  "safetensors>=0.4",
+  "alphagenome-pytorch>=0.1.0",
+  "borzoi-pytorch>=0.4.0"
+]
+dev = [
+  "pytest>=8.0"
+]
+
+[project.scripts]
+panprism = "panprism.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
